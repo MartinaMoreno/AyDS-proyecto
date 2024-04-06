@@ -12,7 +12,12 @@ sealed class Song {
         var isLocallyStored: Boolean = false
     ) : Song() {
 
-        val year: String = releaseDate.split("-").first()
+        val release_date_precision: String =
+            when(releaseDate.split("-").size) {
+                1 -> "year"
+                2 -> "month"
+                else -> "day"
+            }
     }
 
     object EmptySong : Song()
