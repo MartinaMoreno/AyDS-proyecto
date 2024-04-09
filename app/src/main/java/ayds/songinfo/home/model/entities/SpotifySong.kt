@@ -7,18 +7,11 @@ sealed class Song {
         val artistName: String,
         val albumName: String,
         val releaseDate: String,
+        val releaseDatePrecision: String,
         val spotifyUrl: String,
         val imageUrl: String,
         var isLocallyStored: Boolean = false
-    ) : Song() {
-
-        val release_date_precision: String =
-            when(releaseDate.split("-").size) {
-                1 -> "year"
-                2 -> "month"
-                else -> "day"
-            }
-    }
+    ) : Song()
 
     object EmptySong : Song()
 }

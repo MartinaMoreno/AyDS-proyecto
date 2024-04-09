@@ -20,19 +20,18 @@ internal class SongDescriptionHelperImpl : SongDescriptionHelper {
                 }\n" +
                         "Artist: ${song.artistName}\n" +
                         "Album: ${song.albumName}\n" +
-                        "Year: ${getReleaseDate(song.releaseDate, song.release_date_precision)}"
+                        "Release date: ${song.releaseDate()}"
             else -> "Song not found"
         }
     }
 
-private fun getReleaseDate(release: String, releasePrecision: String): String{
-    val format = when(releasePrecision) {
-        "day" -> changeFormatDay(release)
-        "month" -> changeFormatMonth(release)
-        else -> changeFormatYear(release)
-    }
-    return format
-}
+    private fun SpotifySong.releaseDate(): String =
+        when(this.releaseDatePrecision) {
+            "year" -> changeFormatYear(this.releaseDate)
+            "month" -> changeFormatMonth(this.releaseDate)
+            "day" -> changeFormatDay(this.releaseDate)
+            else -> ""
+        }
 
     private fun changeFormatDay(release: String): String {
         val originalFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -49,11 +48,11 @@ private fun getReleaseDate(release: String, releasePrecision: String): String{
     }
 
     private fun changeFormatYear(release: String): String {
-        return if (esB(release.split("-").first().toInt()))
+        return if (isALeap(release.split("-").first().toInt()))
             "${release.split("-").first()} (a leap year)"
         else
             "${release.split("-").first()} (not a leap year)"
     }
 
-    private fun esB(n: Int) = (n % 4 == 0) && (n % 100 != 0 || n % 400 == 0)
+    private fun isALeap(n: Int) = (n % 4 == 0) && (n % 100 != 0 || n % 400 == 0)
 }
