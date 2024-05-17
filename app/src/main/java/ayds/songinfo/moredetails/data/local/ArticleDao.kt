@@ -1,10 +1,9 @@
-package ayds.songinfo.moredetails.fulllogic.model.repository
+package ayds.songinfo.moredetails.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import ayds.songinfo.moredetails.fulllogic.ArticleEntity
 
 @Dao
 interface ArticleDao {
