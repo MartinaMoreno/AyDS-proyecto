@@ -8,7 +8,7 @@ interface ReleaseDateResolverFactory {
     fun getReleaseDateResolver(song: Song.SpotifySong): ReleaseDateResolver
 }
 
-class ReleaseDateResolverImpl: ReleaseDateResolverFactory {
+internal class ReleaseDateResolverImpl: ReleaseDateResolverFactory {
     override fun getReleaseDateResolver(song: Song.SpotifySong): ReleaseDateResolver =
         when (song.releaseDatePrecision) {
             "day" -> ChangeFormatDay(song)
@@ -44,7 +44,7 @@ internal class ChangeFormatMonth(override val song: Song.SpotifySong): ReleaseDa
 internal class ChangeFormatYear(override val song: Song.SpotifySong): ReleaseDateResolver {
     override fun getReleaseDate(): String{
         return if (isALeap(song.releaseDate.split("-").first().toInt()))
-            "${song.releaseDate.split("-").first()} (a leap year)"
+            "${song.releaseDate.split("-").first()} (leap year)"
         else
             "${song.releaseDate.split("-").first()} (not a leap year)"
     }

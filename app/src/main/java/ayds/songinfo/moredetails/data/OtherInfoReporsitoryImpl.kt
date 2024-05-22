@@ -5,7 +5,7 @@ import ayds.songinfo.moredetails.data.local.OtherInfoLocalStorage
 import ayds.songinfo.moredetails.domain.ArtistBiography
 import ayds.songinfo.moredetails.domain.OtherInfoRepository
 
-class OtherInfoRepositoryImpl(
+internal class OtherInfoRepositoryImpl(
     private val otherInfoLocalStorage: OtherInfoLocalStorage,
     private val otherInfoService: OtherInfoService): OtherInfoRepository{
 
