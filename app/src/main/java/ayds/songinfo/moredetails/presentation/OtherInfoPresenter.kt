@@ -1,11 +1,12 @@
 package ayds.songinfo.moredetails.presentation
 
+import ayds.observer.Observable
 import ayds.observer.Subject
 import ayds.songinfo.moredetails.domain.ArtistBiography
 import ayds.songinfo.moredetails.domain.OtherInfoRepository
 
 interface OtherInfoPresenter{
-    val artistBiographyObservable: Subject<ArtistBiographyUiState>
+    val artistBiographyObservable: Observable<ArtistBiographyUiState>
     fun getArtistInfo(artistName: String)
 }
 
