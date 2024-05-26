@@ -1,6 +1,6 @@
 package ayds.songinfo.moredetails.presentation
 
-import ayds.songinfo.moredetails.domain.ArtistBiography
+import com.example.app_external.ArtistBiography
 import ayds.songinfo.moredetails.domain.OtherInfoRepository
 import io.mockk.every
 import io.mockk.mockk
@@ -15,7 +15,8 @@ class OtherInfoPresenterImplTest{
 
     @Test
     fun getArtistInfoTest() {
-        val artistBiography = ArtistBiography("artistName", "biography", "articleUrl")
+        val artistBiography =
+            com.example.app_external.ArtistBiography("artistName", "biography", "articleUrl")
         every { otherInfoRepository.getArtistBiography("artistName") } returns artistBiography
         every { artistBiographyDescriptionHelper.getDescription(artistBiography) } returns "description"
 

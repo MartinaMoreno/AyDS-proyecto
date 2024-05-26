@@ -1,4 +1,4 @@
-package ayds.songinfo.moredetails.domain
+package com.example.app_external
 
 data class ArtistBiography(
     val artistName: String,

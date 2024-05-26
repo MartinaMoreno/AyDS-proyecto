@@ -87,6 +87,12 @@
                 android:layout_margin="16dp"
                 android:text="View Full Article" />
 
+            <TextView
+                android:id="@+id/infoSource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
         </LinearLayout>
 
 

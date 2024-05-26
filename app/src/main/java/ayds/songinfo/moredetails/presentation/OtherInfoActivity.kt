@@ -16,6 +16,7 @@ class OtherInfoActivity: Activity() {
     private lateinit var paneTextView: TextView
     private lateinit var openUrlButton: Button
     private lateinit var lastFMImageView: ImageView
+    private lateinit var paneSourceInfo: TextView
 
     private lateinit var presenter: OtherInfoPresenter
 
@@ -34,6 +35,7 @@ class OtherInfoActivity: Activity() {
         paneTextView = findViewById(R.id.textPane1)
         openUrlButton = findViewById(R.id.openUrlButton1)
         lastFMImageView = findViewById(R.id.imageView1)
+        paneSourceInfo = findViewById(R.id.infoSource)
     }
 
     private fun initPresenter() {

@@ -1,13 +1,14 @@
 package ayds.songinfo.moredetails.data
 
-import ayds.songinfo.moredetails.data.external.OtherInfoService
+import ayds.artist.external.lastfm.OtherInfoService
 import ayds.songinfo.moredetails.data.local.OtherInfoLocalStorage
-import ayds.songinfo.moredetails.domain.ArtistBiography
+import com.example.app_external.ArtistBiography
 import ayds.songinfo.moredetails.domain.OtherInfoRepository
 
 internal class OtherInfoRepositoryImpl(
     private val otherInfoLocalStorage: OtherInfoLocalStorage,
-    private val otherInfoService: OtherInfoService): OtherInfoRepository{
+    private val otherInfoService: OtherInfoService
+): OtherInfoRepository{
 
         override fun getArtistBiography(artistsName: String): ArtistBiography {
             val articleBD = otherInfoLocalStorage.getArticle(artistsName)

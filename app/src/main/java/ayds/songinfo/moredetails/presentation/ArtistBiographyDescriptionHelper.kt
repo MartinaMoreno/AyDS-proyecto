@@ -1,6 +1,6 @@
 package ayds.songinfo.moredetails.presentation
 
-import ayds.songinfo.moredetails.domain.ArtistBiography
+import com.example.app_external.ArtistBiography
 import java.util.Locale
 
 interface ArtistBiographyDescriptionHelper {

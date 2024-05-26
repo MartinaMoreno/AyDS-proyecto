@@ -3,9 +3,9 @@ package ayds.songinfo.moredetails.injector
 import android.content.Context
 import androidx.room.Room
 import ayds.songinfo.moredetails.data.OtherInfoRepositoryImpl
-import ayds.songinfo.moredetails.data.external.LasFMToArtistBiographyResolverImpl
-import ayds.songinfo.moredetails.data.external.LastFMAPI
-import ayds.songinfo.moredetails.data.external.OtherInfoServiceImpl
+import ayds.artist.external.lastfm.LasFMToArtistBiographyResolverImpl
+import ayds.artist.external.lastfm.LastFMAPI
+import ayds.artist.external.lastfm.OtherInfoServiceImpl
 import ayds.songinfo.moredetails.data.local.ArticleDatabase
 import ayds.songinfo.moredetails.data.local.OtherInfoLocalStorageImpl
 import ayds.songinfo.moredetails.presentation.ArtistBiographyDescriptionHelperImpl
@@ -31,8 +31,12 @@ object OtherInfoInjector {
 
         val lastFMAPI = retrofit.create(LastFMAPI::class.java)
 
-        val lastFMToArtistBiographyResolver = LasFMToArtistBiographyResolverImpl()
-        val otherInfoService = OtherInfoServiceImpl(lastFMAPI,lastFMToArtistBiographyResolver)
+        val lastFMToArtistBiographyResolver =
+            LasFMToArtistBiographyResolverImpl()
+        val otherInfoService = OtherInfoServiceImpl(
+            lastFMAPI,
+            lastFMToArtistBiographyResolver
+        )
         val articleLocalStorage = OtherInfoLocalStorageImpl(articleDatabase)
 
         val repository = OtherInfoRepositoryImpl(articleLocalStorage, otherInfoService)

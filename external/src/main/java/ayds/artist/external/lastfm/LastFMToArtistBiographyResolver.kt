@@ -1,6 +1,6 @@
-package ayds.songinfo.moredetails.data.external
+package ayds.artist.external.lastfm
 
-import ayds.songinfo.moredetails.domain.ArtistBiography
+import com.example.app_external.ArtistBiography
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 
@@ -14,7 +14,7 @@ private const val CONTENT = "content"
 private const val URL = "url"
 private const val NO_RESULT = "No Results"
 
-internal class LasFMToArtistBiographyResolverImpl : LastFMToArtistBiographyResolver{
+class LasFMToArtistBiographyResolverImpl : LastFMToArtistBiographyResolver {
     override fun map(serviceData: String?, artistName: String): ArtistBiography {
         val gson = Gson()
         val jobj = gson.fromJson(serviceData, JsonObject::class.java)

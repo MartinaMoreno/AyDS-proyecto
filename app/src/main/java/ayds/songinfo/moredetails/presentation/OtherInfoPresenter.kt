@@ -2,7 +2,7 @@ package ayds.songinfo.moredetails.presentation
 
 import ayds.observer.Observable
 import ayds.observer.Subject
-import ayds.songinfo.moredetails.domain.ArtistBiography
+import com.example.app_external.ArtistBiography
 import ayds.songinfo.moredetails.domain.OtherInfoRepository
 
 interface OtherInfoPresenter{

@@ -1,16 +1,15 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "ayds.songinfo"
+    namespace = "com.example.app_external2"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "ayds.songinfo"
-        minSdk = 26
+        applicationId = "com.example.app_external2"
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -21,7 +20,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -35,23 +37,10 @@ android {
 
 dependencies {
 
-    implementation(project(":observer"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.converter)
-    implementation(libs.gson)
-    implementation(libs.picasso)
-    implementation(libs.androidx.room)
-    implementation(project(":app-external2"))
-    implementation(project(":app-external"))
-    implementation(project(":external"))
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
-
-    ksp(libs.androidx.room.compiler)
     testImplementation(libs.junit)
-    testImplementation(libs.mockk)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
