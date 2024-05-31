@@ -1,8 +1,7 @@
 package ayds.songinfo.moredetails.data
 
-import ayds.artist.external.lastfm.OtherInfoService
 import ayds.songinfo.moredetails.data.local.OtherInfoLocalStorage
-import com.example.app_external.ArtistBiography
+import ayds.artist.external.lastfm.LastFmBiography
 import ayds.songinfo.moredetails.domain.OtherInfoRepository
 import io.mockk.every
 import io.mockk.mockk
@@ -18,7 +17,7 @@ class OtherInfoRepositoryImplTest{
     @Test
     fun `artist local stored then should return it` () {
         val artistBiography =
-            com.example.app_external.ArtistBiography("artistName", "biography", "articleUrl", true)
+            LastFmBiography("artistName", "biography", "articleUrl", true)
         every { otherInfoLocalStorage.getArticle("artistName") } returns artistBiography
 
         val result = otherInfoRepository.getArtistBiography("artistName")
@@ -30,7 +29,7 @@ class OtherInfoRepositoryImplTest{
     @Test
     fun `artist not stored then should return article service with no empty biography` () {
         val artistBiography =
-            com.example.app_external.ArtistBiography("artistName", "biography", "articleUrl", false)
+            LastFmBiography("artistName", "biography", "articleUrl", false)
         every { otherInfoLocalStorage.getArticle("artistName") } returns null
         every { otherInfoService.getArticle("artistName") } returns artistBiography
         every { otherInfoLocalStorage.insertArtist(artistBiography) } returns Unit
@@ -45,7 +44,7 @@ class OtherInfoRepositoryImplTest{
     @Test
     fun `artist not stored then should return article service with empty biography` () {
         val artistBiography =
-            com.example.app_external.ArtistBiography("artistName", "", "articleUrl", false)
+            LastFmBiography("artistName", "", "articleUrl", false)
         every { otherInfoLocalStorage.getArticle("artistName") } returns null
         every { otherInfoService.getArticle("artistName") } returns artistBiography
 

@@ -1,18 +1,17 @@
 package ayds.artist.external.lastfm
 
-import com.example.app_external.ArtistBiography
 import java.io.IOException
 
-interface OtherInfoService{
-    fun getArticle(artistName: String): ArtistBiography
+interface LastFmService{
+    fun getArticle(artistName: String): LastFmBiography
 }
 
-class OtherInfoServiceImpl(
+internal class LastFmServiceImpl(
     private val lastFMAPI: LastFMAPI,
     private val lastFMToArtistBiographyResolver: LastFMToArtistBiographyResolver
-    ): OtherInfoService {
-    override fun getArticle(artistName: String): ArtistBiography {
-        var artistBiographyAux = ArtistBiography(artistName,"","")
+    ): LastFmService {
+    override fun getArticle(artistName: String): LastFmBiography {
+        var artistBiographyAux = LastFmBiography(artistName,"","")
 
         try {
             val callResponse = getSongService(artistName)

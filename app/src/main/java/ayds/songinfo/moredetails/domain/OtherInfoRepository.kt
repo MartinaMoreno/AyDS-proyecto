@@ -1,6 +1,8 @@
 package ayds.songinfo.moredetails.domain
 
+import ayds.artist.external.lastfm.LastFmBiography
+
 
 interface OtherInfoRepository{
-    fun getArtistBiography(artistsName: String): com.example.app_external.ArtistBiography
+    fun getCard(artistsName: String): Card
 }
